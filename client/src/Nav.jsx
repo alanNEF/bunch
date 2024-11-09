@@ -1,5 +1,6 @@
 import React from "react"
 import "./Nav.css"
+import pfp from "./assets/pfp.svg"
 export default function Nav(){
     return(
         <nav id="nav">
@@ -9,7 +10,7 @@ export default function Nav(){
             </ul>
             <div id="account-add-button">
                 <button id="add-btn">+</button>
-                <img className="user-pfp" id="nav-pfp" src="./assets/pfp.svg"/>
+                <img className="user-pfp" id="nav-pfp" src={pfp} />
             </div>
         </nav>
     )
