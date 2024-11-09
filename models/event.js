@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const eventSchema = new mongoose.Schema({
-  title: String,
+  title: {type: String},
   date: {type : Date, default: Date.now },
   location: {type: String, required: false},
   spotsAvailable: {type: Number, min: 1},
