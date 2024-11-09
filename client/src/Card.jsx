@@ -3,6 +3,7 @@ import './MiniCard.css'
 import image from './assets/sugarloaf.jpg'
 import MiniCard from "./MiniCard";
 import CardExpanded from "./CardExpanded";
+import './Card.css' 
 export default function Card(props) {
     const [modal, setModal] = useState(false)
     const toggleCardModal = () => {
@@ -37,7 +38,7 @@ export default function Card(props) {
     return (
         <>
             
-            <div onClick={toggleCardModal}>
+            <div className="mini-container" onClick={toggleCardModal}>
                 <MiniCard
                     event = {{
                         img : props.event.img,
