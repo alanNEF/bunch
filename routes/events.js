@@ -46,8 +46,8 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-//GET to get all events by most recent
-router.get('/recent', async (req, res) => {
+//GET to get all events by upcoming
+router.get('/upcoming', async (req, res) => {
     try {
         const events = await Event.find().sort({ startTime: -1 });
         res.send(events);
