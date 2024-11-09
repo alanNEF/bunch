@@ -4,9 +4,9 @@ const eventSchema = new mongoose.Schema({
   title: String,
   date: Date,
   location: String,
-  spotsAvailable: integer,
-  spotsFilled: integer,
-  tags : integer[],
+  spotsAvailable: Number,
+  spotsFilled: Number,
+  tags : [Number],
   host: userReference,
 });
 
