@@ -19,6 +19,6 @@ const eventSchema = new mongoose.Schema({
   host: userReference,
 });
 
-const events = mongoose.model('Event', eventSchema);
+const Event = mongoose.model('Event', eventSchema);
 
-module.exports = events;
+module.exports = Event;

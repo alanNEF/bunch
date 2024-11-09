@@ -9,6 +9,6 @@ const userReferenceSchema = new mongoose.Schema({
   passcode: { type: String, required: true},
 });
 
-const Item = mongoose.model('Item', userReferenceSchema);
+const User = mongoose.model('User', userReferenceSchema);
 
-module.exports = Item;
+module.exports = User;
