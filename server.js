@@ -1,14 +1,23 @@
+require('dotenv').config();
+
 // server.js
 const express = require('express');
 const app = express();
 const PORT = 6969;
-const Event = require('./models/event');
-const User = require('./models/userReference');
 
-// Set up a basic route
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
+const uri = process.env.MONGODB_URI;
+
+mongoose.connect(uri, {});
+const connection = mongoose.connection;
+connection.once('open', () => {
+    console.log('MongoDB connection established successfully');
 });
+
+const userRouter = require('./routes/users');
+app.use('/users', userRouter);
+
+const eventRouter = require('./routes/events');
+app.use('/events', eventRouter);
 
 // Start the server
 app.listen(PORT, () => {

@@ -1,22 +1,54 @@
 const mongoose = require('mongoose');
 
-const eventSchema = new mongoose.Schema({
-  title: {type: String},
-  date: {type : Date, default: Date.now },
-  location: {type: String, required: false},
-  spotsAvailable: {type: Number, min: 1},
-  spotsFilled: {type: Number, max: spotsAvailable},
+const Schema = mongoose.Schema;
 
-  tags : {type: [Number],
-    validate: {
-      validator: function (v) {
-        return v.length <= 7;  // Custom validation to ensure the array length is 7 or less
-      },
-      message: 'You can only have a maximum of 7 tags.'
-    }
-  },
-
-  host: userReference,
+const eventSchema = new Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    startTime: {
+        type: Date,
+        required: true
+    },
+    endTime: {
+        type: Date,
+        required: true
+    },
+    location: {
+        type: String, 
+        required: false
+    },
+    spotsAvailable: {
+        type: Number,
+        required: true
+    },
+    attendees: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }],
+    image: {
+        url: {
+            type: String,
+            required: true
+        },
+        altText: {
+            type: String,
+            required: false
+        }
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    host: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    tags: [{
+        type: Number,
+        required: true
+    }]
 });
 
 
