@@ -4,6 +4,9 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const PORT = 6969;
+const mongoose = require('mongoose');
+
+app.use(express.json());
 
 const uri = process.env.MONGODB_URI;
 
