@@ -1,39 +1,68 @@
-import React from "react";
-import './Card.css'
-export default function Card(props){
-    const tagsJSX = props.event.tags.map((tag)=>{
-        if(tag === 0){
-            return <div className="social-tag tag">Social</div>
-        } else if(tag === 1){
-            return <div className="outdoor-tag tag">Outdoor</div>
-        } else if(tag === 2){
-            return <div className="sports-tag tag">Sports/Fitness</div>
-        } else if(tag === 3){
-            return <div className="movies-tag tag">Movies</div>
-        } else if(tag === 4){
-            return <div className="gaming-tag tag">Gaming</div>
-        } else if(tag === 5){
-            return <div className="food-tag tag">Food</div>
-        } else if(tag === 6){
-            return <div className="art-tag tag">Art</div>
-        } 
-    })
-    return(
-        <div className="card-container">
-            <div className="card-banner">
-                {props.event.spots.filled === props.event.spots.available && <div className="spots-filled-tag">Spots Filled</div>}
-                <img className="card-img" src={props.event.img} />
+import React, {useState} from "react";
+import './MiniCard.css'
+import image from './assets/sugarloaf.jpg'
+import MiniCard from "./MiniCard";
+import CardExpanded from "./CardExpanded";
+export default function Card(props) {
+    const [modal, setModal] = useState(false)
+    const toggleCardModal = () => {
+        setModal(!modal)
+    }
+    let cardModalContent;
+    if (modal) {
+        cardModalContent = (
+            <>
+                <div onClick={toggleCardModal} id="overlay"></div>
+                <CardExpanded
+                    event = {{
+                        img : props.event.img,
+                        title : props.event.title,
+                        date : props.event.date,
+                        time : props.event.time,
+                        location : props.event.location,
+                        spotsAvailable : props.event.spotsAvailable,
+                        attendees : props.event.attendees,
+                        tags : props.event.tags
+                    }}
+                    user = {{
+                        firstName: props.user.firstName,
+                        lastName: props.user.lastName,
+                        userName: props.user.userName
+                    }}
+                />
+            
+            </>
+        )
+    }
+    return (
+        <>
+            
+            <div onClick={toggleCardModal}>
+                <MiniCard
+                    event = {{
+                        img : props.event.img,
+                        title : props.event.title,
+                        date : props.event.date,
+                        time : props.event.time,
+                        location : props.event.location,
+                        spotsAvailable : props.event.spotsAvailable,
+                        attendees : props.event.attendees,
+                        tags : props.event.tags
+                    }}
+                    user = {{
+                        firstName: props.user.firstName,
+                        lastName: props.user.lastName,
+                        userName: props.user.userName
+                    }}
+                    
+                />
             </div>
-            <div className="card-details">
-                <h1 className="card-title">{props.event.title}</h1>
-                <p className="card-info">{props.event.date}, {props.time}</p>
-                <p className="card-info">{props.event.location}</p>
-                <p className="card-info">{props.event.spots.filled}/{props.event.spots.available} Spots Filled</p>
-                {props.event.tags != [] && <div className="tags">{tagsJSX}</div>}
-            </div>
-            <div className="card-username">
-                {props.user.firstName} {props.user.lastName}
-            </div>
-        </div>
+            
+            
+            {cardModalContent}
+        </>
+        
     )
+    
+
 }

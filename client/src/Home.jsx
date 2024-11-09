@@ -1,16 +1,17 @@
 import React from 'react'
 import { useState } from 'react'
 import './Home.css'
-import Card from './Card'
+import MiniCard from './MiniCard'
 import Nav from './Nav'
 import AddEvent from './AddEvent'
 import image from './assets/sugarloaf.jpg'
-
+import Card from './Card'
 function Home() {
   return (
     <>
       <Nav />
-      {/* <Card 
+
+      <Card
 
         event = {{
           img : image,
@@ -18,7 +19,8 @@ function Home() {
           date : 'November 25th',
           time : '4 P.M',
           location : 'Mt.Sugarloaf',
-          spots : {filled: 4, available: 5},
+          spotsAvailable : 10,
+          attendees:[{firstName:'Alan', lastName:'Achilles', userName: 'alanNEF'}],
           tags : [0,1,2,3,4,5]
         }}
         user = {{
@@ -26,7 +28,7 @@ function Home() {
           lastName: 'Achilles',
           userName: 'balch'
         }}
-      /> */}
+      />
     </>
   )
 }
