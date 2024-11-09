@@ -20,15 +20,19 @@ export default function Card(props){
     })
     return(
         <div className="card-container">
-            {props.event.spots.filled === props.event.spots.available && <div className="spots-filled-tag">Spots Filled</div>}
-            <img className="card-img" src={props.event.img} />
-            <h1 className="card-title">{props.event.title}</h1>
-            <p className="card-info">{props.event.date}, {props.time}</p>
-            <p className="card-info">{props.event.location}</p>
-            <p className="card-info">{props.event.spots.filled}/{props.event.spots.available} Spots Filled</p>
-            {props.event.tags != [] && <div className="tags">{tagsJSX}</div>}
-            <div className="card-username">
-                {props.user.firstName} {props.user.lastName}
+            <div className="card-banner">
+                {props.event.spots.filled === props.event.spots.available && <div className="spots-filled-tag">Spots Filled</div>}
+                <img className="card-img" src={props.event.img} />
+            </div>
+            <div className="card-details">
+                <h1 className="card-title">{props.event.title}</h1>
+                <p className="card-info">{props.event.date}, {props.time}</p>
+                <p className="card-info">{props.event.location}</p>
+                <p className="card-info">{props.event.spots.filled}/{props.event.spots.available} Spots Filled</p>
+                {props.event.tags != [] && <div className="tags">{tagsJSX}</div>}
+                <div className="card-username">
+                    {props.user.firstName} {props.user.lastName}
+                </div>
             </div>
         </div>
     )
