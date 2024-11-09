@@ -1,6 +1,6 @@
 import React from "react";
 export default function Card(props){
-    const tags = props.tags.map((tag)=>{
+    const tagsJSX = props.event.tags.map((tag)=>{
         if(tag === 0){
             return <div className="social-tag">Social</div>
         } else if(tag === 1){
@@ -19,15 +19,15 @@ export default function Card(props){
     })
     return(
         <div className="card-container">
-            {props.spots-filled && <div className="spots-filled-tag">Spots Filled</div>}
-            <img className="card-img" src={props.img} />
-            <h1 className="card-title">{props.title}</h1>
-            <p className="card-info">{props.date}, {props.time}</p>
-            <p className="card-info">{props.location}</p>
-            <p className="card-info">{props.spots.filled}/{props.spots.available} Spots Filled</p>
-            {tags != [] && <div className="tags">{tags}</div>}
+            {props.event.spots.filled === props.event.spots.available && <div className="spots-filled-tag">Spots Filled</div>}
+            <img className="card-img" src={props.event.img} />
+            <h1 className="card-title">{props.event.title}</h1>
+            <p className="card-info">{props.event.date}, {props.time}</p>
+            <p className="card-info">{props.event.location}</p>
+            <p className="card-info">{props.event.spots.filled}/{props.event.spots.available} Spots Filled</p>
+            {props.event.tags != [] && <div className="tags">{tagsJSX}</div>}
             <div className="card-username">
-                {props.username}
+                {props.user.firstName} {props.user.lastName}
             </div>
         </div>
     )
