@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 
 const userReferenceSchema = new mongoose.Schema({
-  firstName: String,
-  lastName: String,
-  email: String,
-  passcode: String,
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
+  email: { type: String, required: true },
+  //Passcode is stored as a hash in database. 
+  //The client side will convert it to a hash
+  passcode: { type: String, required: true},
 });
 
 const Item = mongoose.model('Item', userReferenceSchema);
