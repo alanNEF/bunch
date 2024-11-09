@@ -1,7 +1,10 @@
 #add-event-form{
     display: flex;
     flex-direction: column;
+    width: 70dvh;
+    height: 70dvw;
     align-items: start;
+    
 }
 
 #add-event-form > input{
