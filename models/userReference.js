@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const userReferenceSchema = new mongoose.Schema({
   firstName: { type: String, required: true },
@@ -8,6 +9,18 @@ const userReferenceSchema = new mongoose.Schema({
   //The client side will convert it to a hash
   passcode: { type: String, required: true},
 });
+
+//Presaving hashing function
+userReferenceSchema.pre('save', async function (next) {
+  try {
+    const salt = await bcrypt.genSalt(10);
+    this.passcode = await bcrypt.hash(this.passcode, salt);
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
+
 
 const User = mongoose.model('User', userReferenceSchema);
 
