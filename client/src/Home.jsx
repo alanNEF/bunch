@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState } from 'react'
 import './Home.css'
 import Nav from './Nav'
@@ -10,4 +11,4 @@ function Home() {
   )
 }
 
-export default App
+export default Home
