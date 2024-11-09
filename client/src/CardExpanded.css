@@ -1,0 +1,96 @@
+.card-container-exp {
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width: 70dvw;
+    height: 85dvh;
+    display:flex;
+    flex-direction:column;
+    text-align:left;
+    background-color:#D14C4C;
+    border-radius:1rem;
+} 
+.card-banner-exp {
+    height:40%;
+}
+.card-img-exp {
+    height:100%;
+    width:100%;
+    object-fit:cover;  
+    border-radius: 1rem 1rem  0 0;
+}
+.card-title-exp {
+    font-size:2rem;
+}
+
+.card-details-exp {
+    font-size:1.2rem;
+    padding:1rem;
+    padding-top:.8rem;
+    height: 100%;
+}
+
+.tags-exp {
+    margin-top:1rem;
+    display:flex;
+    overflow: scroll;
+    scrollbar-width: none;
+    width:auto;
+}
+.tag-exp {
+    margin-right:1rem;
+    padding:.2rem;
+    border-radius:.5rem;
+}
+.card-description {
+    height:100%;
+    padding:1rem
+
+}
+.join-btn {
+    border:none;
+    width: auto;
+    height: auto;
+    padding:.2rem;
+    margin-left:1rem;
+    margin-bottom:1rem;
+    border-radius:.5rem;
+    font-size:2rem;
+    color:white;
+    font-weight: normal;
+    width:50%;
+    
+}
+
+  
+.social-tag-exp {
+    background-color:var(--social-tag-color);
+}
+.outdoor-tag-exp {
+    background-color:var(--outdoor-tag-color);
+}
+.sports-tag-exp {
+    background-color:var(--sports-tag-color);
+}
+.movies-tag-exp {
+    background-color:var(--movies-tag-color);
+}
+.gaming-tag-exp {
+    background-color:var(--gaming-tag-color);
+}
+.food-tag-exp {
+    background-color:var(--food-tag-color);
+}
+.art-tag-exp {
+    background-color:var(--art-tag-color);
+}
+.card-username-exp {
+    margin:0 1rem 1rem 1rem;
+}
+p {
+    margin:.1rem;
+}
+h1 {
+    margin:0;
+}
