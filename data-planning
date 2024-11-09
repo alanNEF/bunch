@@ -1,4 +1,4 @@
-Every event has follwing variables:
+Every event has following variables:
   String title
   Date date
   String location
