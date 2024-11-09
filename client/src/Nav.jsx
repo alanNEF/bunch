@@ -9,10 +9,9 @@ export default function Nav(){
         <>
             
             <nav id="nav">
-            
             <ul id="nav-pages">
-                <li className="nav-page">Home</li>
-                <li className="nav-page">My Events</li>
+                <li  className="nav-page"><a href="../index.html">Home</a></li>
+                <li className="nav-page"><a href="../my-events.html">My Events</a></li>
             </ul>
             <div id="account-add-button">
                 <AddEvent/>
