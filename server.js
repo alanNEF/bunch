@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const PORT = 6969;
 const Event = require('./models/event');
-const User = require ('./models/userReference')
+const User = require('./models/userReference');
 
 // Set up a basic route
 app.get('/', (req, res) => {
