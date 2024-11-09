@@ -38,25 +38,25 @@
     border-radius:.5rem;
 }
 .social-tag {
-    background-color:black;
+    background-color:var(--social-tag-color);
 }
 .outdoor-tag {
-    background-color:green;
+    background-color:var(--outdoor-tag-color);
 }
 .sports-tag {
-    background-color:purple;
+    background-color:var(--sports-tag-color);
 }
 .movies-tag {
-    background-color:blue;
+    background-color:var(--movies-tag-color);
 }
 .gaming-tag {
-    background-color:orange;
+    background-color:var(--gaming-tag-color);
 }
 .food-tag {
-    background-color:tan;
+    background-color:var(--food-tag-color);
 }
 .art-tag {
-    background-color:pink;
+    background-color:var(--art-tag-color);
 }
 .card-username {
     margin:0 1rem 1rem 1rem;

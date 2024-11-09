@@ -6,6 +6,13 @@
   background-color: #292323;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+  --outdoor-tag-color: green;
+  --social-tag-color:black;
+  --sports-tag-color:purple;
+  --movies-tag-color :blue;
+  --gaming-tag-color:orange;
+  --food-tag-color :tan;
+  --art-tag-color:pink;
 }
 
 a {
