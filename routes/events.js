@@ -19,7 +19,7 @@ router.get('/:id', async (req, res) => {
 });
 
 //GET to get all events by most recent
-router.get('/', async (req, res) => {
+router.get('/recent', async (req, res) => {
     try {
         const events = await Event.find()
         res.json(subscribers);
@@ -29,8 +29,24 @@ router.get('/', async (req, res) => {
 });
 
 //GET by most recent AND following
+router.get('/following', async (req, res) => {
+    try {
+        const events = await Event.find()
+        res.json(subscribers);
+     } catch (err){
+        res.status(500).json({ message: "Server error: can't get all events" })
+     }
+});
 
-//GET by reccomended (optional)
+//GET by recommended (optional)
+router.get('/recommended', async (req, res) => {
+    try {
+        const events = await Event.find()
+        res.json(subscribers);
+     } catch (err){
+        res.status(500).json({ message: "Server error: can't get all events" })
+     }
+});
 
 //PATCH when user adds themselves to event-only attendees affected
 

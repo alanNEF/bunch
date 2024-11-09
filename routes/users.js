@@ -12,6 +12,10 @@ const router = express.Router();
 
 //GET 'passcode' to get hash and compare to password entry for login
 
+//PATCH 'following' when following someone
+
+//PATCH 'following' when unfollowing someone
+
 //UPDATE user information??? unnecessary
 
 //DELETE user?
