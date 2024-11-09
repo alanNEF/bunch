@@ -10,7 +10,6 @@ function Home() {
   return (
     <>
       <Nav />
-      <AddEvent/>
       {/* <Card 
 
         event = {{
