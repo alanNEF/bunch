@@ -34,14 +34,15 @@ router.post('/postEvent', async (req, res) => {
 
 
 //GET to get single event
-router.get('/:id', async (req, res) => {
+router.get('/byID/:id', async (req, res) => {
     try {
         const event = await Event.findById(req.params.id);
-        if (!user) {
+        if (!event) {
             res.status(404).send({ message: 'Event not found with id ' + req.params.id })
         }
         res.send(event);
     } catch (err){
+        console.log(err)
         res.status(500).send({ message: "Server error: can't get all events" })
     }
 });
