@@ -1,0 +1,20 @@
+Every event has follwing variables:
+  String title
+  Date date
+  String location
+  Integer spotsAvailable
+  Integer spotsFilled
+  IntegerList tags
+  UserReference host
+Every UserReference has following variables:
+  String integer
+  String passcode (stored as hashcode)
+
+tags definition:
+social = 0
+outdoors = 1
+sports-fitness = 2
+movies = 3
+gaming = 4
+food = 5
+art = 6
