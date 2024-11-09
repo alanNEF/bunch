@@ -21,7 +21,15 @@ const userSchema = new Schema({
     passcode: { 
         type: String, 
         required: true 
-    }
+    },
+    attending: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Event'
+    }],
+    hosting: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Event'
+    }]
 });
 
 //Presaving hashing function
