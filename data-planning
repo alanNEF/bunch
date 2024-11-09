@@ -7,7 +7,9 @@ Every event has follwing variables:
   IntegerList tags
   UserReference host
 Every UserReference has following variables:
-  String integer
+  String firstName
+  String lastName
+  String email
   String passcode (stored as hashcode)
 
 tags definition:
