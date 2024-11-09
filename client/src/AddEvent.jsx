@@ -56,7 +56,7 @@ export default function AddEvent(){
                 </div>
                 <div id="desc-field">
                     <label htmlFor="description">Description (500 Characters)</label>
-                    <textarea name="description" id="description" maxLength={500} rows={10} cols={100}></textarea>
+                    <textarea name="description" id="description" maxLength={500}></textarea>
                 </div>
             </div>
         </form>

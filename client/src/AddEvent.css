@@ -8,8 +8,8 @@
     border: 1px white solid;
     border-radius: 1rem;
     padding: 1.5rem;
+    background-color:#292323;
 }
-
 #general-info{
     grid-row: 1/2;
     grid-column: 1/2;
@@ -76,6 +76,10 @@
     color: white;
     padding: .3rem;
     font-family: Arial, Helvetica, sans-serif;
+    width:50vw;
+    max-width:50vw;
+    height:20vh;
+    
 }
 
 #add-event-form > div >input{
