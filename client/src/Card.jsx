@@ -9,9 +9,9 @@ export default function Card(props){
         } else if(tag === 2){
             return <div className="sports-tag tag">Sports/Fitness</div>
         } else if(tag === 3){
-            return <div className="movies tag">Movies</div>
+            return <div className="movies-tag tag">Movies</div>
         } else if(tag === 4){
-            return <div className="gaming tag">Gaming</div>
+            return <div className="gaming-tag tag">Gaming</div>
         } else if(tag === 5){
             return <div className="food-tag tag">Food</div>
         } else if(tag === 6){
@@ -30,9 +30,9 @@ export default function Card(props){
                 <p className="card-info">{props.event.location}</p>
                 <p className="card-info">{props.event.spots.filled}/{props.event.spots.available} Spots Filled</p>
                 {props.event.tags != [] && <div className="tags">{tagsJSX}</div>}
-                <div className="card-username">
-                    {props.user.firstName} {props.user.lastName}
-                </div>
+            </div>
+            <div className="card-username">
+                {props.user.firstName} {props.user.lastName}
             </div>
         </div>
     )
