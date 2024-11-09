@@ -17,8 +17,8 @@ function Home() {
           date : 'November 25th',
           time : '4 P.M',
           location : 'Mt.Sugarloaf',
-          spots : {filled: 5, available: 5},
-          tags : [0,5]
+          spots : {filled: 4, available: 5},
+          tags : [0,1,2,3,4,5]
         }}
         user = {{
           firstName: 'Alan',
