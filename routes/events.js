@@ -50,7 +50,7 @@ router.get('/byID/:id', async (req, res) => {
 //GET to get all events by upcoming
 router.get('/upcoming', async (req, res) => {
     try {
-        const events = await Event.find().sort({ startTime: -1 });
+        const events = await Event.find().sort({ startTime: 1 });
         res.send(events);
      } catch (err){
         res.status(500).send({ message: "Server error: can't get all events" })
