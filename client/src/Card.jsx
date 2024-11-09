@@ -3,19 +3,19 @@ import './Card.css'
 export default function Card(props){
     const tagsJSX = props.event.tags.map((tag)=>{
         if(tag === 0){
-            return <div className="social-tag">Social</div>
+            return <div className="social-tag tag">Social</div>
         } else if(tag === 1){
-            return <div className="outdoor-tag">Outdoor</div>
+            return <div className="outdoor-tag tag">Outdoor</div>
         } else if(tag === 2){
-            return <div className="sports-tag">Sports/Fitness</div>
+            return <div className="sports-tag tag">Sports/Fitness</div>
         } else if(tag === 3){
-            return <div className="movies">Movies</div>
+            return <div className="movies tag">Movies</div>
         } else if(tag === 4){
-            return <div className="gaming">Gaming</div>
+            return <div className="gaming tag">Gaming</div>
         } else if(tag === 5){
-            return <div className="food-tag">Food</div>
+            return <div className="food-tag tag">Food</div>
         } else if(tag === 6){
-            return <div className="art-tag">Art</div>
+            return <div className="art-tag tag">Art</div>
         } 
     })
     return(
