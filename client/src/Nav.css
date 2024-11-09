@@ -1,0 +1,35 @@
+#nav {
+    display:flex;
+    justify-content:space-between;
+    background: transparent;
+}
+#nav-pages {
+    font: bold;
+    display:flex;
+    padding:0;
+    float:left;
+    list-style-type: none;
+    color:white;
+    font-size:1.5rem;
+}
+#nav-pages li {
+    margin-right:40px;
+}
+
+#account-add-button{
+    display: flex;
+    align-items: center;
+}
+
+#add-btn {
+    border:none;
+    width: 50px;
+    height: 50px;
+    border-radius:10px;
+    font-size:2rem;
+    color:white;
+    font-weight: normal;
+    margin-right:40px;
+    
+}
+
