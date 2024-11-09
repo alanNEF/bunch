@@ -10,43 +10,46 @@ router.get('/:id', async (req, res) => {
     try {
         const event = await Event.findById(req.params.id);
         if (!user) {
-            res.status(404).json({ message: 'Event not found with id ' + req.params.id })
+            res.status(404).send({ message: 'Event not found with id ' + req.params.id })
         }
-        res.json(event);
+        res.send(event);
     } catch (err){
-        res.status(500).json({ message: "Server error: can't get all events" })
+        res.status(500).send({ message: "Server error: can't get all events" })
     }
 });
 
 //GET to get all events by most recent
 router.get('/recent', async (req, res) => {
     try {
-        const events = await Event.find()
-        res.json(subscribers);
+        const events = await Event.find().sort({ startTime: -1 });
+        res.send(events);
      } catch (err){
-        res.status(500).json({ message: "Server error: can't get all events" })
+        res.status(500).send({ message: "Server error: can't get all events" })
      }
 });
 
 //GET by most recent AND following
 router.get('/following', async (req, res) => {
     try {
-        const events = await Event.find()
-        res.json(subscribers);
+        const targetUsers  = req.User.following;
+        const events = await Event.find({host: { $in: targetUsers}}).sort({ startTime: -1 });
+        res.send(events);
      } catch (err){
-        res.status(500).json({ message: "Server error: can't get all events" })
+        res.status(500).send({ message: "Server error: can't get all events" })
      }
 });
 
 //GET by recommended (optional)
+/*
 router.get('/recommended', async (req, res) => {
     try {
-        const events = await Event.find()
-        res.json(subscribers);
+        const events = await Event.find();
+        res.json(events);
      } catch (err){
         res.status(500).json({ message: "Server error: can't get all events" })
      }
 });
+*/
 
 //PATCH when user adds themselves to event-only attendees affected
 
