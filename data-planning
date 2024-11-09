@@ -5,8 +5,8 @@ Every event has following variables:
   Integer spotsAvailable
   Integer spotsFilled
   IntegerList tags
-  UserReference host
-Every UserReference has following variables:
+  User host
+Every User has following variables:
   String firstName
   String lastName
   String email

@@ -9,7 +9,8 @@
     "dev": "vite --port 4242",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "devStart": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
