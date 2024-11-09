@@ -3,13 +3,15 @@ import { useState } from 'react'
 import './Home.css'
 import Card from './Card'
 import Nav from './Nav'
+import AddEvent from './AddEvent'
 import image from './assets/sugarloaf.jpg'
 
 function Home() {
   return (
     <>
       <Nav />
-      <Card 
+      <AddEvent/>
+      {/* <Card 
 
         event = {{
           img : image,
@@ -25,7 +27,7 @@ function Home() {
           lastName: 'Achilles',
           userName: 'balch'
         }}
-      />
+      /> */}
     </>
   )
 }
