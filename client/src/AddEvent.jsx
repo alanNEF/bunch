@@ -50,7 +50,7 @@ export default function AddEvent(){
         };
 
         try {
-          const response = await fetch('http://localhost:5000/api/submit', {
+          const response = await fetch('http://localhost:4242/events/postEvent', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
