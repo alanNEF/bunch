@@ -10,6 +10,7 @@
     text-align:left;
     background-color:#D14C4C;
     border-radius:1rem;
+    z-index: 1;
 } 
 .card-banner-exp {
     height:40%;
