@@ -1,5 +1,11 @@
 .mini-container {
     cursor: pointer;
-    width:22vw;
-    height:22vw;
+    width:25vw;
+    height:25vh;
+    margin-left: 10%;
+    /* align-self: center; */
+}
+
+#ovelay{
+    height: 100%;
 }
