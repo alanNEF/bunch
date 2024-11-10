@@ -8,7 +8,7 @@ import './CardList.css'
 import { useEffect } from 'react';
 
 export default function AttendingList(){
-    const userID = '672fd00f0637e2361e575050';
+    const userID = document.cookie;
     const [cards, setCards] = useState([]);
     const [user, setUser] = useState({});
     const dateToString = (date) => {

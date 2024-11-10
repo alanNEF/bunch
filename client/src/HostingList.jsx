@@ -9,7 +9,8 @@ import './CardList.css'
 import { useEffect } from 'react';
 
 export default function HostingList(){
-    const userID = '672fd00f0637e2361e575050';
+    const userID = document.cookie;
+    console.log(userID);
     const [cards, setCards] = useState([]);
     const [user, setUser] = useState({});
     const dateToString = (date) => {
@@ -30,7 +31,7 @@ export default function HostingList(){
         // Fetch card data from server
         const fetchUser = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/users/${userID}`);
+                const response = await fetch(`http://localhost:3000/users/byID/${userID}`);
                 if (!response.ok) throw new Error('Network response was not ok');
                 const data = await response.json();
                 setUser(data);
