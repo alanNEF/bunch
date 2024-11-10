@@ -30,6 +30,8 @@ export default function LoginForm() {
             const data = await response.json();
             if (response.status === 200) {
                 window.location.href = '/..index.html';
+                document.cookie = `${data.userId}`;
+                console.log(document.cookie);
             } else {
                 console.log(data);
                 alert('Either your passcode or email is wrong.');
