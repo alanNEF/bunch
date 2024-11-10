@@ -85,6 +85,7 @@ export default function AddEvent(){
         
           const result = await response.json();
           console.log('Server response:', result);
+          location.reload();
         } catch (error) {
             console.log(JSON.stringify(dataToSubmit))
           console.error('Error submitting form:', error);
