@@ -4,7 +4,7 @@
     left:50%;
     transform: translate(-50%,-50%);
     width: 70dvw;
-    height: 85dvh;
+    height: 90dvh;
     display:flex;
     flex-direction:column;
     text-align:left;
@@ -86,7 +86,8 @@
     background-color:var(--art-tag-color);
 }
 .card-username-exp {
-    margin:0 1rem 1rem 1rem;
+    margin:0 0 1rem 1rem;
+    font-style: italic;
 }
 p {
     margin:.1rem;

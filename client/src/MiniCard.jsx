@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import './MiniCard.css'
 export default function MiniCard(props){
-    console.log(props.event.start)
     const tagsJSX = props.event.tags.map((tag)=>{
         if(tag === 0){
             return <div className="social-tag tag">Social</div>
@@ -32,9 +31,9 @@ export default function MiniCard(props){
                 <p className="card-info">{props.event.attendees.length}/{props.event.spotsAvailable} Spots Filled</p>
                 {props.event.tags != [] && <div className="tags">{tagsJSX}</div>}
             </div>
-            <div className="card-username">
+            {/* <div className="card-username">
                 {props.user.firstName} {props.user.lastName}
-            </div>
+            </div> */}
         </div>
     )
 }
