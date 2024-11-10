@@ -17,6 +17,8 @@ export default function Card(props) {
                 <div onClick={toggleCardModal} id="overlay"></div>
                 <CardExpanded
                     cardExpandedKey = {props.cardKey}
+                    hosting = {props.hosting}
+                    attending = {props.attending}
                     event = {{
                         img : props.event.img,
                         title : props.event.title,

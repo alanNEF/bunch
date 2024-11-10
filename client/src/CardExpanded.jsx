@@ -22,6 +22,33 @@ export default function CardExpanded(props) {
             
             const result = await response.json();
             console.log('Server response:', result);
+            location.reload();
+        } catch (error) {
+            // console.log(JSON.stringify(dataToSubmit))
+            console.error('Error submitting form:', error);
+        }
+    }
+    const handleDelete = async (e) => {
+        e.preventDefault()
+        console.log(props.cardExpandedKey)
+        try {
+            
+            const response = await fetch(`http://localhost:3000/events/delete/${props.cardExpandedKey}`, {
+                
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+
+            // location.reload();
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const result = await response.json();
+            console.log('Server response:', result);
         } catch (error) {
             // console.log(JSON.stringify(dataToSubmit))
             console.error('Error submitting form:', error);
@@ -44,6 +71,13 @@ export default function CardExpanded(props) {
             return <div className="art-tag-exp tag">Art</div>
         } 
     })
+    let button = <button onClick={handleAttendee} className="join-btn">Join</button>
+    if(props.hosting){
+       button = <button onClick={handleDelete} className="join-btn">Delete</button>
+    } else if(props.attending){
+        // <button onClick={handleAttendee} className="join-btn">Delete</button>
+        button = <button  className="join-btn"></button>
+    }
 
     return (
         <>
@@ -63,7 +97,7 @@ export default function CardExpanded(props) {
                 <div className="card-username-exp">
                     {props.user.firstName} {props.user.lastName}
                 </div>
-                <button onClick={handleAttendee} className="join-btn">Join</button>
+                {button}
             </div>
         </>
         
