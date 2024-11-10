@@ -29,7 +29,7 @@ export default function CardExpanded(props) {
                 </div>
                 <div className="card-details-exp"> 
                     <h1 className="card-title-exp">{props.event.title}</h1>
-                    <p className="card-info-exp">{props.event.date}, {props.time}</p>
+                    <p className="card-info-exp">{props.event.start} to {props.event.end}</p>
                     <p className="card-info-exp">{props.event.location}</p>
                     <p className="card-info-exp">{props.event.attendees.length}/{props.event.spotsAvailable} Spots Filled</p>
                     {props.event.tags != [] && <div className="tags-exp">{tagsJSX}</div>}

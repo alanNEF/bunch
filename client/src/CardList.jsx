@@ -10,7 +10,20 @@ import { useEffect } from 'react';
 
 export default function CardList(){
     const [cards, setCards] = useState([]);
-
+    const dateToString = (date) => {
+        if (!date) return 'nates mom';
+        const parsedDate = new Date(date);
+        if (isNaN(parsedDate)) return 'Invalid Date';
+        const year = parsedDate.getFullYear();
+        const month = parsedDate.toLocaleString('default', { month: 'long' });
+        const day = parsedDate.getDate();
+        let hours = parsedDate.getHours();
+        const minutes = parsedDate.getMinutes().toString().padStart(2, '0');
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        return `${month} ${day}, ${year} ${hours}:${minutes} ${ampm}`;
+    };
     useEffect(() => {
         // Fetch card data from server
         const fetchCards = async () => {
@@ -27,6 +40,9 @@ export default function CardList(){
         fetchCards();
     }, []);
     const cardsJSX = cards.map((card) => {
+        let sTime = card.startTime ? dateToString(card.startTime) : 'Invalid Date';
+        let eTime = card.endTime ? dateToString(card.endTime) : 'Invalid Date';
+        // console.log(eTime);
         return(
             <>
                 <Card
@@ -34,8 +50,8 @@ export default function CardList(){
                     event = {{
                         img: image,
                         title: card.title,
-                        startTime: card.startTime,
-                        endTime: card.endTime,
+                        start: sTime,
+                        end: eTime,
                         location: card.location,
                         spotsAvailable: card.spotsAvailable,
                         attendees: card.attendees,
