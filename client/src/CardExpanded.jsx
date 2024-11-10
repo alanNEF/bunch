@@ -2,6 +2,31 @@ import React, {useState} from "react"
 import './CardExpanded.css'
 import MiniCard from './MiniCard'
 export default function CardExpanded(props) {
+    const handleAttendee = async (e) => {
+        e.preventDefault()
+        console.log(props.cardExpandedKey)
+        try {
+            
+            const response = await fetch('http://localhost:3000/events/addAttendee', {
+                
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ userId: document.cookie, eventId: props.cardExpandedKey})
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const result = await response.json();
+            console.log('Server response:', result);
+        } catch (error) {
+            // console.log(JSON.stringify(dataToSubmit))
+            console.error('Error submitting form:', error);
+        }
+    }
     const tagsJSX = props.event.tags.map((tag)=>{
         if(tag === 0){
             return <div className="social-tag-exp tag-exp">Social</div>
@@ -38,7 +63,7 @@ export default function CardExpanded(props) {
                 <div className="card-username-exp">
                     {props.user.firstName} {props.user.lastName}
                 </div>
-                <button className="join-btn">Join</button>
+                <button onClick={handleAttendee} className="join-btn">Join</button>
             </div>
         </>
         

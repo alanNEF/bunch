@@ -8,7 +8,7 @@ import './CardList.css'
 import { useEffect } from 'react';
 
 export default function AttendingList(){
-    const userID = '672fd00f0637e2361e575050';
+    const userID = document.cookie;
     const [cards, setCards] = useState([]);
     const [user, setUser] = useState({});
     const dateToString = (date) => {
@@ -29,7 +29,7 @@ export default function AttendingList(){
         // Fetch card data from server
         const fetchUser = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/users/${userID}`);
+                const response = await fetch(`http://localhost:3000/users/byID/${userID}`);
                 if (!response.ok) throw new Error('Network response was not ok');
                 const data = await response.json();
                 setUser(data);
@@ -58,6 +58,7 @@ export default function AttendingList(){
             fetchEventDetails();
         }
     }, [user]);
+    console.log(cards);
     const cardsJSX = cards.map((card) => {
         let sTime = card.startTime ? dateToString(card.startTime) : 'Invalid Date';
         let eTime = card.endTime ? dateToString(card.endTime) : 'Invalid Date';
