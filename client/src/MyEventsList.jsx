@@ -9,7 +9,7 @@ import './CardList.css'
 import { useEffect } from 'react';
 
 export default function HostingList(){
-    const userID = '60b9b3b3b3b3b3b3b3b3b3b3';
+    const userID = '672fcd340637e2361e57503a';
     const [cards, setCards] = useState([]);
     const [user, setUser] = useState({});
     const dateToString = (date) => {
@@ -54,19 +54,38 @@ export default function HostingList(){
     //     };
     //     fetchCards();
     // }, []);
-    const cardData = [];
-    const eventIDs = user.hosting.map(async (id) => {
-        try {
-            const response = await fetch(`http://localhost:3000/events/byID/${id}`);
-            if (!response.ok) throw new Error('Network response was not ok');
-            const data = await response.json();
-            // setCards(data);
-            cardData.push(data);
-        } catch (error) {
-            console.error('Error fetching cards:', error);
+    useEffect(() => {
+        if (user.hosting) {
+            const fetchEventDetails = async () => {
+                try {
+                    const eventDetails = await Promise.all(
+                        user.hosting.map(async (id) => {
+                            const response = await fetch(`http://localhost:3000/events/byID/${id}`);
+                            if (!response.ok) throw new Error('Network response was not ok');
+                            return await response.json();
+                        })
+                    );
+                    setCards(eventDetails);
+                } catch (error) {
+                    console.error('Error fetching event details:', error);
+                }
+            };
+            fetchEventDetails();
         }
-    })
-    const cardsJSX = cardData.map((card) => {
+    }, [user]);
+    // const cardData = [];
+    // const eventIDs = user.hosting.map(async (id) => {
+    //     try {
+    //         const response = await fetch(`http://localhost:3000/events/byID/${id}`);
+    //         if (!response.ok) throw new Error('Network response was not ok');
+    //         const data = await response.json();
+    //         // setCards(data);
+    //         cardData.push(data);
+    //     } catch (error) {
+    //         console.error('Error fetching cards:', error);
+    //     }
+    // })
+    const cardsJSX = cards.map((card) => {
         let sTime = card.startTime ? dateToString(card.startTime) : 'Invalid Date';
         let eTime = card.endTime ? dateToString(card.endTime) : 'Invalid Date';
         return(

@@ -5,11 +5,13 @@ import './Hosting.css'
 import MyEvents from './Home.jsx'
 import Card from './Card.jsx'
 import image from './assets/sugarloaf.jpg'
+import HostingList from './MyEventsList.jsx'
 export default function Hosting() {
     return (
         <div id="hosting-container">
             <h1 id="hosting-title">Hosting</h1>
-            <Card
+            <HostingList/>
+            {/* <Card
                 event = {{
                     img : image,
                     title : 'Hike at Mt.Sugarloaf',
@@ -25,7 +27,7 @@ export default function Hosting() {
                     lastName: 'Achilles',
                     userName: 'balch'
                 }}
-            />
+            /> */}
         </div>
     )
 }
