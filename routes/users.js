@@ -50,7 +50,7 @@ router.patch('/addHosting', async (req, res) => {
 });
 
 //GET user by ID
-router.get('/:id', async (req, res) => {
+router.get('/byID/:id', async (req, res) => {
     const { id } = req.params;
 
     try {
