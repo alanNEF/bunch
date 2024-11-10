@@ -48,7 +48,7 @@ export default function CardList(){
                 <Card
                     key = {card._id}
                     event = {{
-                        img: image,
+                        img: card.image.url,
                         title: card.title,
                         start: sTime,
                         end: eTime,
