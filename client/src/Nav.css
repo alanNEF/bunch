@@ -11,6 +11,7 @@
     list-style-type: none;
     color:white;
     font-size:1.5rem;
+    width: 25vw;
 }
 #nav-pages li {
     margin-right:40px;
@@ -19,6 +20,7 @@
 #account-add-button{
     display: flex;
     align-items: center;
+    width: 25vw;
 }
 
 #add-btn {
@@ -30,5 +32,12 @@
     color:white;
     font-weight: normal;
     margin-right:40px;
-    
+    margin-left: 50%;
+}
+#nav-logo {
+    height: 50px;
+    width: 130px;
+    margin: 0;
+    align-self: center;
+    /* height: auto; */
 }
