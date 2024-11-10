@@ -1,5 +1,6 @@
 const express = require('express');
 const Event = require('../models/event');
+const User = require('../models/user');
 const router = express.Router();
 
 //POST new event
@@ -8,7 +9,10 @@ router.post('/postEvent', async (req, res) => {
     const { title, startTime, endTime, location, spotsAvailable, attendees, image, description, host, tags } = req.body;
 
     if (!title || !startTime || !endTime || !spotsAvailable || !description || !image || !image.url || !tags) {
-        return res.status(400).json({ error: 'Required fields are missing' });
+        return res.status(400).json({ 
+            error: 'Required fields are missing', 
+            body: req.body 
+        });
     }
 
     try {
@@ -81,12 +85,120 @@ router.get('/recommended', async (req, res) => {
 */
 
 //PATCH when user adds themselves to event-only attendees affected
+router.patch('/addAttendee', async (req, res) => {
+    const { userId, eventId } = req.body;
+
+    // Check for missing fields
+    if (!userId || !eventId) {
+        return res.status(400).json({ error: 'Required fields are missing' });
+    }
+
+    try {
+        // Find the event by eventId
+        const event = await Event.findById(eventId);
+        if (!event) {
+            return res.status(404).json({ error: 'Event not found' });
+        }
+
+        // Add user to event's attendees if not already added
+        if (!event.attendees.includes(userId)) {
+            event.attendees.push(userId);
+            await event.save();
+        }
+
+        // Find the user by userId
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        // Add event to user's attending array if not already added
+        if (!user.attending.includes(eventId)) {
+            user.attending.push(eventId);
+            await user.save();
+        }
+
+        res.status(200).json({ event, user });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to add attendee' });
+    }
+});
 
 //PATCH when user removes themselves from event-only attendees affected
+router.patch('/removeAttendee', async (req, res) => {
+    const { userId, eventId } = req.body;
+
+    if (!userId || !eventId) {
+        return res.status(400).json({ error: 'Required fields are missing' });
+    }
+
+    try {
+        const event = await Event.findById(eventId);
+        if (!event) {
+            return res.status(404).json({ error: 'Event not found' });
+        }
+
+        const index = event.attendees.indexOf(userId);
+        if (index > -1) {
+            event.attendees.splice(index, 1);
+            await event.save();
+        }
+
+        res.status(200).json(event);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to remove attendee' });
+    }
+});
 
 //PUT when editing events-replaces all resources with new copy
+router.put('/update/:id', async (req, res) => {
+    const { title, startTime, endTime, location, spotsAvailable, attendees, image, description, host, tags } = req.body;
+
+    if (!title || !startTime || !endTime || !spotsAvailable || !description || !image || !image.url || !tags) {
+        return res.status(400).json({ error: 'Required fields are missing' });
+    }
+
+    try {
+        const updatedEvent = await Event.findByIdAndUpdate(
+            req.params.id,
+            {
+                title,
+                startTime,
+                endTime,
+                location,
+                spotsAvailable,
+                attendees,
+                image,
+                description,
+                host,
+                tags
+            },
+            { new: true }
+        );
+
+        if (!updatedEvent) {
+            return res.status(404).json({ error: 'Event not found' });
+        }
+
+        res.status(200).json(updatedEvent);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to update event' });
+    }
+});
 
 //DELETE event
+router.delete('/delete/:id', async (req, res) => {
+    try {
+        const event = await Event.findByIdAndDelete(req.params.id);
+        if (!event) {
+            return res.status(404).json({ error: 'Event not found' });
+        }
+
+        res.status(200).json({ message: 'Event deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to delete event' });
+    }
+});
 
 
 
