@@ -24,7 +24,8 @@ export default function Card(props) {
                         location : props.event.location,
                         spotsAvailable : props.event.spotsAvailable,
                         attendees : props.event.attendees,
-                        tags : props.event.tags
+                        tags : props.event.tags,
+                        description : props.event.description
                     }}
                     user = {{
                         firstName: props.user.firstName,
@@ -50,7 +51,8 @@ export default function Card(props) {
                         location : props.event.location,
                         spotsAvailable : props.event.spotsAvailable,
                         attendees : props.event.attendees,
-                        tags : props.event.tags
+                        tags : props.event.tags,
+                        description : props.event.description
                     }}
                     user = {{
                         firstName: props.user.firstName,
