@@ -14,8 +14,8 @@ export default function AddEvent(){
         location: '',
         spotsAvailable: 0,
         image: {
-            "url": "https://example.com/cybersecurity.jpg",
-            "altText":"niskns"
+            url: "https://example.com/cybersecurity.jpg",
+            altText:"niskns"
         },
         tags: [],
         description: '',
@@ -26,19 +26,18 @@ export default function AddEvent(){
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         if (name === 'image') {
-            const file = e.target.value;
-            if (file) {
-            const url = URL.createObjectURL(file);
+            const url = value;
+            console.log(url)
             setFormData((prevFormData) => ({
                 ...prevFormData,
                 image: {
-                url: url,
-                altText: file.name
+                    ...prevFormData.image, // Preserve existing image properties
+                    url: value, // Update only the URL
                 }
             }));
-            }
         }
-        if (type === 'checkbox') {
+        // console.log(formData)
+        else if (type === 'checkbox') {
         // Convert the tag name to a number
         const tagValue = parseInt(value, 10);
         
@@ -49,6 +48,7 @@ export default function AddEvent(){
             : prevFormData.tags.filter((tag) => tag !== tagValue), // Remove tag if unchecked
         }));
         } else {
+            console.log(name)
         // Update other input values
         setFormData((prevFormData) => ({
             ...prevFormData,
@@ -69,24 +69,26 @@ export default function AddEvent(){
             startTime,
             endTime,
         };
-        try {
             
-            const response = await fetch('http://localhost:3000/events/postEvent', {
-                
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(dataToSubmit)
-            });
+      try {
+
+          const response = await fetch('http://localhost:3000/events/postEvent', {
             
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            
-            const formResult = await response.json();
-            updateUserWithEvent(formResult._id);
-            console.log('Server response:', formResult);
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(dataToSubmit)
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+        
+          const result = await response.json();
+          console.log('Server response:', result);
+          location.reload();
+
         } catch (error) {
             console.log(JSON.stringify(dataToSubmit))
             console.error('Error submitting form:', error);
@@ -138,8 +140,8 @@ export default function AddEvent(){
                     </div>
                     <div id="photo-sub">
                         <h1> t </h1>
-                        <label htmlFor="image">Banner Image</label>
-                        <input type="file" name="image" id="banner-image" onChange={handleChange}/>
+                        <label htmlFor="image">Banner Image Link</label>
+                        <input type="text" name="image" id="banner-image" placeholder="Link..." onChange={handleChange}/>
                     </div>
                     <div id="extra-info">
                         <label htmlFor="tags">Tags</label>

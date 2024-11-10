@@ -42,8 +42,13 @@
 #banner-image{
     margin-top: 1rem;
     border: none;
-    border-bottom: none;
+    border-bottom: 1px white solid;
     font-size: 1.2rem;
+}
+
+#banner-image::placeholder{
+    color: #71706E;
+    font-style: italic;
 }
 
 #banner-image::file-selector-button{
