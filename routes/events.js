@@ -189,16 +189,19 @@ router.put('/update/:id', async (req, res) => {
 //DELETE event
 router.delete('/delete/:id', async (req, res) => {
     try {
+        const event = await Event.findById(req.params.id);
+        if (!event) {
+            return res.status(404).json({ error: 'Event not found' });
+        }
         const attendees = event.attendees;
         await User.updateMany(
             { _id: { $in: attendees } },
             { $pull: { attending: req.params.id } }
         );
-        const event = await Event.findByIdAndDelete(req.params.id);
-        if (!event) {
-            return res.status(404).json({ error: 'Event not found' });
-        }
-
+        await User.findByIdAndUpdate(event.host, { $pull: { hosting: req.params.id } });
+        
+        await Event.findByIdAndDelete(req.params.id);
+        
         res.status(200).json({ message: 'Event deleted successfully' });
     } catch (error) {
         res.status(500).json({ error: 'Failed to delete event' });
