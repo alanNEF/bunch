@@ -7,13 +7,24 @@ import Hosting from './Hosting.jsx'
 import Attending from './Attending.jsx'
 export default function MyEventsBody() {
     const [isHostingClicked, setIsHostingClicked] = useState(true);
-
+    let pageContent;
     const toggleClicked = () => {
         setIsHostingClicked(!isHostingClicked);
     };
+    if (isHostingClicked) {
+        pageContent= (
+            <Hosting/>
+        )
+    }
+    else {
+        pageContent= (
+            <Attending/>
+        )
+    }
     
     return (
         <>
+            
             <div id="tabs-container">
                 <div id="tabs">
                     <div onClick={toggleClicked} id="hosting-tab" className={isHostingClicked ? 'clicked' : ''}>Hosting</div>
@@ -22,7 +33,8 @@ export default function MyEventsBody() {
                 
                 {/* <Attending/>             */}
             </div>
-            <Hosting/>
+            {pageContent}
+            
         </>
         
         
