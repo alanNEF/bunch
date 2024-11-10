@@ -65,7 +65,9 @@ export default function AttendingList(){
         return(
             <>
                 <Card
-                    key = {card._id}
+                    cardKey = {card._id}
+                    hosting = {false}
+                    attending = {true}
                     event = {{
                         img: card.image.url,
                         title: card.title,

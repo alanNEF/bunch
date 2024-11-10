@@ -47,6 +47,8 @@ export default function CardList(){
             <>
                 <Card
                     cardKey = {card._id}
+                    hosting = {false}
+                    attending = {false}
                     event = {{
                         img: card.image.url,
                         title: card.title,

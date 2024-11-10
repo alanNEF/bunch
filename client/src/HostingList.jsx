@@ -67,7 +67,9 @@ export default function HostingList(){
         return(
             <>
                 <Card
-                    key = {card._id}
+                    cardKey = {card._id}
+                    hosting = {true}
+                    attending = {false}
                     event = {{
                         img: card.image.url,
                         title: card.title,
