@@ -9,7 +9,7 @@ import './CardList.css'
 import { useEffect } from 'react';
 
 export default function HostingList(){
-    const userID = '672fcd340637e2361e57503a';
+    const userID = '672fd00f0637e2361e575050';
     const [cards, setCards] = useState([]);
     const [user, setUser] = useState({});
     const dateToString = (date) => {
@@ -73,18 +73,6 @@ export default function HostingList(){
             fetchEventDetails();
         }
     }, [user]);
-    // const cardData = [];
-    // const eventIDs = user.hosting.map(async (id) => {
-    //     try {
-    //         const response = await fetch(`http://localhost:3000/events/byID/${id}`);
-    //         if (!response.ok) throw new Error('Network response was not ok');
-    //         const data = await response.json();
-    //         // setCards(data);
-    //         cardData.push(data);
-    //     } catch (error) {
-    //         console.error('Error fetching cards:', error);
-    //     }
-    // })
     const cardsJSX = cards.map((card) => {
         let sTime = card.startTime ? dateToString(card.startTime) : 'Invalid Date';
         let eTime = card.endTime ? dateToString(card.endTime) : 'Invalid Date';
