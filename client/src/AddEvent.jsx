@@ -54,7 +54,9 @@ export default function AddEvent(){
         endTime,
         };
         try {
+
           const response = await fetch('http://localhost:3000/events/postEvent', {
+            
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
