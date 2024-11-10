@@ -80,7 +80,7 @@ router.post('/passcode', async (req, res) => {
 
         const isMatch = await bcrypt.compare(passcode, user.passcode);
         if (isMatch) {
-            res.status(200).json({ message: 'Passcode matches' });
+            res.status(200).json({ message: 'Passcode matches', userId: user._id });
         } else {
             res.status(400).json({ error: 'Invalid passcode' });
         }
