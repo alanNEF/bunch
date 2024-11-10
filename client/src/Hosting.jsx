@@ -5,11 +5,11 @@ import './Hosting.css'
 import MyEvents from './Home.jsx'
 import Card from './Card.jsx'
 import image from './assets/sugarloaf.jpg'
-import HostingList from './MyEventsList.jsx'
+import HostingList from './HostingList.jsx'
 export default function Hosting() {
     return (
         <div id="hosting-container">
-            <h1 id="hosting-title">Hosting</h1>
+            {/* <h1 id="hosting-title">Hosting</h1> */}
             <HostingList/>
             {/* <Card
                 event = {{
