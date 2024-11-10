@@ -7,7 +7,6 @@ export default function Nav(){
    
     return(
         <>
-            
             <nav id="nav">
             <ul id="nav-pages">
                 <li  className="nav-page"><a href="../index.html">Home</a></li>

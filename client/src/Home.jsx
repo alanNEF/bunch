@@ -6,11 +6,12 @@ import Nav from './Nav'
 import AddEvent from './AddEvent'
 import image from './assets/sugarloaf.jpg'
 import Card from './Card'
-function Home() {
+import LoginForm from './LoginForm'
+export default function Home() {
   return (
     <>
+      
       <Nav />
-
       <Card
 
         event = {{
@@ -33,4 +34,3 @@ function Home() {
   )
 }
 
-export default Home
