@@ -13,6 +13,7 @@
     border-radius: 1rem;
     padding: 1.5rem;
     background-color:#292323;
+    z-index: 1;
 }
 #general-info{
     grid-row: 1/2;
@@ -159,6 +160,7 @@
     bottom: 0;
     position: fixed;
     background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
   }
   
   #add-sub{

@@ -67,7 +67,7 @@ export default function AttendingList(){
                 <Card
                     key = {card._id}
                     event = {{
-                        img: image,
+                        img: card.image.url,
                         title: card.title,
                         start: sTime,
                         end: eTime,
