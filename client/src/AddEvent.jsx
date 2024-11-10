@@ -14,8 +14,8 @@ export default function AddEvent(){
         location: '',
         spotsAvailable: 0,
         image: {
-            "url": "https://example.com/cybersecurity.jpg",
-            "altText":"niskns"
+            url: "https://example.com/cybersecurity.jpg",
+            altText:"niskns"
         },
         tags: [],
         description: '',
@@ -26,19 +26,18 @@ export default function AddEvent(){
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         if (name === 'image') {
-            const file = e.target.value;
-            if (file) {
-            const url = URL.createObjectURL(file);
+            const url = value;
+            console.log(url)
             setFormData((prevFormData) => ({
                 ...prevFormData,
                 image: {
-                url: url,
-                altText: file.name
+                    ...prevFormData.image, // Preserve existing image properties
+                    url: value, // Update only the URL
                 }
             }));
-            }
         }
-        if (type === 'checkbox') {
+        // console.log(formData)
+        else if (type === 'checkbox') {
         // Convert the tag name to a number
         const tagValue = parseInt(value, 10);
         
@@ -49,6 +48,7 @@ export default function AddEvent(){
             : prevFormData.tags.filter((tag) => tag !== tagValue), // Remove tag if unchecked
         }));
         } else {
+            console.log(name)
         // Update other input values
         setFormData((prevFormData) => ({
             ...prevFormData,
@@ -115,8 +115,8 @@ export default function AddEvent(){
                     </div>
                     <div id="photo-sub">
                         <h1> t </h1>
-                        <label htmlFor="image">Banner Image</label>
-                        <input type="file" name="image" id="banner-image" onChange={handleChange}/>
+                        <label htmlFor="image">Banner Image Link</label>
+                        <input type="text" name="image" id="banner-image" placeholder="Link..." onChange={handleChange}/>
                     </div>
                     <div id="extra-info">
                         <label htmlFor="tags">Tags</label>
