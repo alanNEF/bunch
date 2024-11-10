@@ -10,9 +10,14 @@ export default function AddEvent(){
         endTime: '',
         location: '',
         spotsAvailable: 0,
-        bannerImage: '',
+        image: {
+            "url": "https://example.com/cybersecurity.jpg",
+            "altText":"niskns"
+        },
         tags: [],
-        description: ''
+        description: '',
+        host: "672fd00f0637e2361e575050",
+        attendees: []
       });
     
     const handleChange = (e) => {
@@ -42,25 +47,31 @@ export default function AddEvent(){
         
         const startTime = new Date(formData.startTime);
         const endTime = new Date(formData.endTime);
-
+    
         const dataToSubmit = {
         ...formData,
         startTime,
         endTime,
         };
-
         try {
-          const response = await fetch('http://localhost:4242/events/postEvent', {
+
+          const response = await fetch('http://localhost:3000/events/postEvent', {
+            
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify(dataToSubmit),
+            body: JSON.stringify(dataToSubmit)
           });
-    
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+        
           const result = await response.json();
           console.log('Server response:', result);
         } catch (error) {
+            console.log(JSON.stringify(dataToSubmit))
           console.error('Error submitting form:', error);
         }
     };
@@ -79,8 +90,8 @@ export default function AddEvent(){
                         <input type="text" name="title" id="title" placeholder="An Amazing Title..." onChange={handleChange}/>
                         <label htmlFor="startTime">Start Time</label>
                         <input type="datetime-local" name="startTime" id="start-time"  onChange={handleChange}/>
-                        <label htmlFor="endRime">End Time</label>
-                        <input type="datetime-local" name="endRime" id="end-time" onChange={handleChange}/>
+                        <label htmlFor="endTime">End Time</label>
+                        <input type="datetime-local" name="endTime" id="end-time" onChange={handleChange}/>
                         <label htmlFor="location">Location</label>
                         <input type="text" name="location" id="location" placeholder="A cool place..." onChange={handleChange}/>
                         <label htmlFor="spotsAvailable">Available Spots</label>
@@ -88,8 +99,8 @@ export default function AddEvent(){
                     </div>
                     <div id="photo-sub">
                         <h1> t </h1>
-                        <label htmlFor="bannerImage">Banner Image</label>
-                        <input type="file" name="bannerIamge" id="banner-image" onChange={handleChange}/>
+                        <label htmlFor="image">Banner Image</label>
+                        <input type="file" name="image" id="banner-image" onChange={handleChange}/>
                     </div>
                     <div id="extra-info">
                         <label htmlFor="tags">Tags</label>
