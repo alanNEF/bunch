@@ -2,11 +2,13 @@ require('dotenv').config();
 
 // server.js
 const express = require('express');
+const cors = require('cors');
 const app = express();
-const PORT = 6969;
+const PORT = 3000;
 const mongoose = require('mongoose');
 
 app.use(express.json());
+app.use(cors());
 
 const uri = process.env.MONGODB_URI;
 

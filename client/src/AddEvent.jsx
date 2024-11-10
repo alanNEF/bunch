@@ -10,9 +10,14 @@ export default function AddEvent(){
         endTime: '',
         location: '',
         spotsAvailable: 0,
-        image: '',
+        image: {
+            "url": "https://example.com/cybersecurity.jpg",
+            "altText":"niskns"
+        },
         tags: [],
-        description: ''
+        description: '',
+        host: "672fd00f0637e2361e575050",
+        attendees: []
       });
     
     const handleChange = (e) => {
@@ -49,14 +54,18 @@ export default function AddEvent(){
         endTime,
         };
         try {
-          const response = await fetch('http://localhost:6969/events/postEvent', {
+          const response = await fetch('http://localhost:3000/events/postEvent', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify(dataToSubmit),
+            body: JSON.stringify(dataToSubmit)
           });
-    
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+        
           const result = await response.json();
           console.log('Server response:', result);
         } catch (error) {

@@ -9,7 +9,10 @@ router.post('/postEvent', async (req, res) => {
     const { title, startTime, endTime, location, spotsAvailable, attendees, image, description, host, tags } = req.body;
 
     if (!title || !startTime || !endTime || !spotsAvailable || !description || !image || !image.url || !tags) {
-        return res.status(400).json({ error: 'Required fields are missing' });
+        return res.status(400).json({ 
+            error: 'Required fields are missing', 
+            body: req.body 
+        });
     }
 
     try {
