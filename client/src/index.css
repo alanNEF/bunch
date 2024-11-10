@@ -35,12 +35,10 @@ body {
 
 button {
   background-color:#990304;
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
-  transition: filter 0.3s ease; /* Smooth shadow transition */
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 button:hover {
   background-color: #D14C4C;
-  filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.15));
 }
 button:active{
   background-color: #990304;
