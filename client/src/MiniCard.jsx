@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import './MiniCard.css'
 export default function MiniCard(props){
-    console.log(props.event.start)
     const tagsJSX = props.event.tags.map((tag)=>{
         if(tag === 0){
             return <div className="social-tag tag">Social</div>
