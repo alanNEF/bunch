@@ -42,11 +42,11 @@ export default function CardList(){
     const cardsJSX = cards.map((card) => {
         let sTime = card.startTime ? dateToString(card.startTime) : 'Invalid Date';
         let eTime = card.endTime ? dateToString(card.endTime) : 'Invalid Date';
-        // console.log(eTime);
+        // console.log(card._id);
         return(
             <>
                 <Card
-                    key = {card._id}
+                    cardKey = {card._id}
                     event = {{
                         img: card.image.url,
                         title: card.title,

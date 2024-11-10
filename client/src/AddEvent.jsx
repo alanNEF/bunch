@@ -19,7 +19,7 @@ export default function AddEvent(){
         },
         tags: [],
         description: '',
-        host: "672fd00f0637e2361e575050",
+        host: document.cookie,
         attendees: []
       });
     
@@ -56,19 +56,21 @@ export default function AddEvent(){
         }));
         }
     };
+
     
     const handleSubmit = async (e) => {
         e.preventDefault();
         
         const startTime = new Date(formData.startTime);
         const endTime = new Date(formData.endTime);
-    
+        
         const dataToSubmit = {
-        ...formData,
-        startTime,
-        endTime,
+            ...formData,
+            startTime,
+            endTime,
         };
-        try {
+            
+      try {
 
           const response = await fetch('http://localhost:3000/events/postEvent', {
             
@@ -86,11 +88,34 @@ export default function AddEvent(){
           const result = await response.json();
           console.log('Server response:', result);
           location.reload();
+
         } catch (error) {
             console.log(JSON.stringify(dataToSubmit))
-          console.error('Error submitting form:', error);
+            console.error('Error submitting form:', error);
         }
     };
+
+    const updateUserWithEvent = async (eventId) => {
+        try {
+            const response2 = await fetch(`http://localhost:3000/users/addHosting`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ userId: document.cookie, eventId: eventId }),
+            });
+            console.log(response2)
+            if (!response2.ok) {
+                throw new Error(`HTTP error! status: ${response2.status}`);
+            }
+
+            const userResult = await response2.json();
+            console.log('User updated with new event:', userResult);
+        } catch (error) {
+            console.error('Error updating user with event:', error);
+        }
+    };
+    
     const toggleModal = () => {
         setModal(!modal)
     }
