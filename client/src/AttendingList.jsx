@@ -29,7 +29,7 @@ export default function AttendingList(){
         // Fetch card data from server
         const fetchUser = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/users/${userID}`);
+                const response = await fetch(`http://localhost:3000/users/byID/${userID}`);
                 if (!response.ok) throw new Error('Network response was not ok');
                 const data = await response.json();
                 setUser(data);
@@ -58,6 +58,7 @@ export default function AttendingList(){
             fetchEventDetails();
         }
     }, [user]);
+    console.log(cards);
     const cardsJSX = cards.map((card) => {
         let sTime = card.startTime ? dateToString(card.startTime) : 'Invalid Date';
         let eTime = card.endTime ? dateToString(card.endTime) : 'Invalid Date';

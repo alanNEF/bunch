@@ -41,26 +41,13 @@ export default function HostingList(){
         };
         fetchUser();
     }, []);
-    // useEffect(() => {
-    //     // Fetch card data from server
-    //     const fetchCards = async () => {
-    //         try {
-    //             const response = await fetch(`http://localhost:3000/events/byID/${eventID}`);
-    //             if (!response.ok) throw new Error('Network response was not ok');
-    //             const data = await response.json();
-    //             setCards(data);
-    //         } catch (error) {
-    //             console.error('Error fetching cards:', error);
-    //         }
-    //     };
-    //     fetchCards();
-    // }, []);
     useEffect(() => {
         if (user.hosting) {
             const fetchEventDetails = async () => {
                 try {
                     const eventDetails = await Promise.all(
                         user.hosting.map(async (id) => {
+                            console.log(id);
                             const response = await fetch(`http://localhost:3000/events/byID/${id}`);
                             if (!response.ok) throw new Error('Network response was not ok');
                             return await response.json();
