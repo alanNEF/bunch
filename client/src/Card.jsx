@@ -5,6 +5,7 @@ import MiniCard from "./MiniCard";
 import CardExpanded from "./CardExpanded";
 import './Card.css' 
 export default function Card(props) {
+    // console.log(props.cardKey)
     const [modal, setModal] = useState(false)
     const toggleCardModal = () => {
         setModal(!modal)
@@ -15,6 +16,7 @@ export default function Card(props) {
             <>
                 <div onClick={toggleCardModal} id="overlay"></div>
                 <CardExpanded
+                    cardExpandedKey = {props.cardKey}
                     event = {{
                         img : props.event.img,
                         title : props.event.title,
