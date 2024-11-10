@@ -87,6 +87,7 @@ export default function AddEvent(){
         
           const result = await response.json();
           console.log('Server response:', result);
+        updateUserWithEvent(result._id);
           location.reload();
 
         } catch (error) {
