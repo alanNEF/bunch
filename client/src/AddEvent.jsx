@@ -4,6 +4,9 @@ import Nav from "./Nav";
 
 export default function AddEvent(){
     const [modal, setModal] = useState(false)
+
+    
+  
     const [formData, setFormData] = useState({
         title: '',
         startTime: '',
@@ -22,7 +25,19 @@ export default function AddEvent(){
     
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
-
+        if (name === 'image') {
+            const file = e.target.value;
+            if (file) {
+            const url = URL.createObjectURL(file);
+            setFormData((prevFormData) => ({
+                ...prevFormData,
+                image: {
+                url: url,
+                altText: file.name
+                }
+            }));
+            }
+        }
         if (type === 'checkbox') {
         // Convert the tag name to a number
         const tagValue = parseInt(value, 10);
