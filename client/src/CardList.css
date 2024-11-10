@@ -1,0 +1,8 @@
+.card-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 25vw;
+    grid-auto-rows: 25vw;
+    row-gap: 5rem;
+    /* align-items: center; */
+}

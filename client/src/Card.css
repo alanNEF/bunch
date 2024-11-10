@@ -2,4 +2,6 @@
     cursor: pointer;
     width:25vw;
     height:25vh;
+    margin-left: 10%;
+    /* align-self: center; */
 }

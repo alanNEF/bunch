@@ -6,12 +6,14 @@ import Nav from './Nav'
 import AddEvent from './AddEvent'
 import image from './assets/sugarloaf.jpg'
 import Card from './Card'
+import CardList from './CardList'
 function Home() {
+
   return (
     <>
       <Nav />
-
-      <Card
+      <CardList />
+      {/* <Card
 
         event = {{
           img : image,
@@ -28,7 +30,7 @@ function Home() {
           lastName: 'Achilles',
           userName: 'balch'
         }}
-      />
+      /> */}
     </>
   )
 }
