@@ -76,7 +76,7 @@ export default function CardExpanded(props) {
        button = <button onClick={handleDelete} className="join-btn">Delete</button>
     } else if(props.attending){
         // <button onClick={handleAttendee} className="join-btn">Delete</button>
-        button = <button  className="join-btn"></button>
+        button = <div></div>
     }
 
     return (
