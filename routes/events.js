@@ -207,8 +207,6 @@ router.delete('/delete/:id', async (req, res) => {
         res.status(500).json({ error: 'Failed to delete event' });
     }
     // Remove this event id from the attending list of all users who were attendees
-
-    res.status(200).json({ message: 'Event deleted successfully and attendees updated' });
 });
 
 
